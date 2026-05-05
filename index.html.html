@@ -1,0 +1,407 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.w{font-family:'DM Sans',sans-serif;background:#141a14;min-height:600px;border-radius:16px;overflow:hidden;color:#e0ece0}
+.hdr{background:#0d120d;padding:14px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #243024}
+.brand{font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;color:#4cda7c;letter-spacing:2px}
+.sub{font-size:10px;color:#5a7a5a;letter-spacing:1px;text-transform:uppercase}
+.tag{margin-left:auto;font-size:11px;color:#4cda7c;background:rgba(76,218,124,0.1);border:1px solid rgba(76,218,124,0.2);padding:3px 10px;border-radius:20px}
+.body{padding:16px 18px}
+.sec{font-family:'Rajdhani',sans-serif;font-size:11px;letter-spacing:2px;color:#5a7a5a;text-transform:uppercase;margin-bottom:10px}
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.scard{background:#0d120d;border:1px solid #243024;border-radius:10px;padding:10px 12px}
+.scard-lbl{font-size:10px;color:#5a7a5a;text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px}
+.scard-val{font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;color:#4cda7c;line-height:1}
+.scard-val.red{color:#e85252}
+.scard-sub{font-size:10px;color:#5a7a5a;margin-top:2px}
+.tabs{display:flex;gap:0;border-bottom:1px solid #243024;margin-bottom:14px;overflow-x:auto;flex-wrap:nowrap}
+.tab{font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;padding:8px 14px;cursor:pointer;color:#5a7a5a;border-bottom:2px solid transparent;white-space:nowrap;transition:.2s;flex-shrink:0}
+.tab:hover{color:#c0dcc0}
+.tab.on{color:#4cda7c;border-bottom-color:#4cda7c}
+.panel{display:none}
+.panel.on{display:block}
+.profile{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.pstat{background:#0d120d;border:1px solid #243024;border-radius:10px;padding:12px 14px}
+.pstat-lbl{font-size:10px;color:#5a7a5a;text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.pstat-val{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:#e0ece0;line-height:1}
+.pstat-sub{font-size:11px;color:#5a7a5a;margin-top:3px}
+.eff-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-top:8px}
+.eff-work{background:#4cda7c}
+.eff-idle{background:#e85252}
+.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.chart-box{background:#0d120d;border:1px solid #243024;border-radius:10px;padding:12px}
+.chart-title{font-size:10px;color:#5a7a5a;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.daily-table{width:100%;border-collapse:collapse;font-size:12px}
+.daily-table th{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:#5a7a5a;padding:6px 8px;text-align:left;border-bottom:1px solid #243024}
+.daily-table td{padding:6px 8px;border-bottom:1px solid #1a261a;color:#c0dcc0;vertical-align:middle}
+.daily-table tr:last-child td{border-bottom:none}
+.daily-table tr.special td{color:#8aaa8a;font-style:italic}
+.badge{display:inline-block;font-size:9px;padding:2px 7px;border-radius:8px;font-weight:500;letter-spacing:.3px}
+.b-hi{background:rgba(76,218,124,.15);color:#4cda7c}
+.b-mid{background:rgba(250,199,117,.15);color:#fac775}
+.b-lo{background:rgba(232,82,82,.15);color:#e85252}
+.b-info{background:rgba(100,160,230,.15);color:#80b8f0}
+.b-gray{background:rgba(140,160,140,.1);color:#8aaa8a}
+.idle-cell{font-size:11px}
+.idle-neg{color:#80b8f0}
+.idle-pos{color:#e85252}
+.avg-row td{border-top:1px solid #243024;color:#4cda7c;font-weight:500}
+.mini-bar{display:inline-block;height:3px;border-radius:2px;vertical-align:middle;margin-left:4px}
+</style>
+
+<div class="w">
+<div class="hdr">
+  <svg width="34" height="34" viewBox="0 0 36 36" fill="none">
+    <rect x="12" y="2" width="12" height="32" rx="3" fill="#2a3a2a"/>
+    <rect x="2" y="12" width="32" height="12" rx="3" fill="#2a3a2a"/>
+    <rect x="13" y="3" width="10" height="30" rx="2" fill="none" stroke="#4cda7c" stroke-width="1.5"/>
+    <rect x="3" y="13" width="30" height="10" rx="2" fill="none" stroke="#4cda7c" stroke-width="1.5"/>
+    <circle cx="14" cy="22" r="2.5" fill="none" stroke="#4cda7c" stroke-width="1.5"/>
+    <circle cx="22" cy="14" r="2.5" fill="none" stroke="#4cda7c" stroke-width="1.5"/>
+    <line x1="14" y1="19.5" x2="22" y2="16.5" stroke="#4cda7c" stroke-width="1"/>
+  </svg>
+  <div><div class="brand">TECHMED</div><div class="sub">Engenharia Hospitalar</div></div>
+  <div class="tag">Abril — Relatório Detalhado</div>
+</div>
+
+<div class="body">
+<div class="sec">Visão Geral da Equipe</div>
+<div class="summary-grid">
+  <div class="scard"><div class="scard-lbl">Técnicos</div><div class="scard-val">9</div><div class="scard-sub">profissionais</div></div>
+  <div class="scard"><div class="scard-lbl">Total OS</div><div class="scard-val">1.115</div><div class="scard-sub">ordens no mês</div></div>
+  <div class="scard"><div class="scard-lbl">Horas Trab.</div><div class="scard-val">1.121</div><div class="scard-sub">horas produtivas</div></div>
+  <div class="scard"><div class="scard-lbl">Tempo Ocioso</div><div class="scard-val red">420</div><div class="scard-sub">horas ociosas</div></div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div id="panels"></div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const team = [
+{id:'arilson',nome:'ARILSON',cargo:'Técnico',total:105,horas:184.69,ocioso:17.81,media:{os:4.56,h:8.03,i:0.81},
+dias:[
+{d:'01',dw:'Qua',os:7,h:8.1,i:0.9,obs:''},
+{d:'02',dw:'Qui',os:4,h:4.45,i:4.55,obs:'Limpeza na assistência'},
+{d:'03',dw:'Sex',special:'Feriado nacional'},
+{d:'04',dw:'Sáb',special:'—'},
+{d:'05',dw:'Dom',special:'—'},
+{d:'06',dw:'Seg',special:'Day Off'},
+{d:'07',dw:'Ter',os:7,h:6.42,i:2.58,obs:''},
+{d:'08',dw:'Qua',os:6,h:7.38,i:1.62,obs:''},
+{d:'09',dw:'Qui',os:6,h:8.45,i:0.55,obs:''},
+{d:'10',dw:'Sex',os:3,h:6.07,i:2.93,obs:''},
+{d:'11',dw:'Sáb',os:1,h:4.5,i:null,obs:'Treinamento'},
+{d:'12',dw:'Dom',os:1,h:8,i:1,obs:''},
+{d:'13',dw:'Seg',os:1,h:12,i:-3,obs:''},
+{d:'14',dw:'Ter',os:1,h:11,i:-2,obs:''},
+{d:'15',dw:'Qua',os:3,h:9.65,i:-0.65,obs:''},
+{d:'16',dw:'Qui',os:1,h:13.33,i:-4.33,obs:''},
+{d:'17',dw:'Sex',os:3,h:14.12,i:-5.12,obs:''},
+{d:'18',dw:'Sáb',os:2,h:10.33,i:-1.33,obs:''},
+{d:'19',dw:'Dom',special:'—'},
+{d:'20',dw:'Seg',special:'Folga'},
+{d:'21',dw:'Ter',special:'Feriado nacional'},
+{d:'22',dw:'Qua',os:7,h:7.8,i:1.2,obs:''},
+{d:'23',dw:'Qui',os:4,h:4.28,i:4.72,obs:''},
+{d:'24',dw:'Sex',os:5,h:6.12,i:2.88,obs:''},
+{d:'25',dw:'Sáb',os:8,h:6.05,i:2.95,obs:'Sobreaviso'},
+{d:'26',dw:'Dom',os:8,h:9.37,i:-0.37,obs:'Sobreaviso'},
+{d:'27',dw:'Seg',os:5,h:7.12,i:1.88,obs:''},
+{d:'28',dw:'Ter',os:8,h:7.75,i:1.25,obs:''},
+{d:'29',dw:'Qua',os:9,h:6.27,i:2.73,obs:''},
+{d:'30',dw:'Qui',os:5,h:6.13,i:2.87,obs:''},
+]},
+{id:'bruno',nome:'BRUNO',cargo:'Técnico',total:125,horas:98.39,ocioso:44.15,media:{os:6.94,h:5.46,i:3.15},
+dias:[
+{d:'01',os:2,h:10.92,i:-1.92,obs:''},
+{d:'02',special:'Folga'},
+{d:'03',os:8,h:3.6,i:null,obs:'Feriado / Sobreaviso'},
+{d:'04',os:8,h:4.47,i:null,obs:'Sobreaviso'},
+{d:'05',os:7,h:3.97,i:null,obs:'Sobreaviso'},
+{d:'06',os:21,h:6.4,i:2.6,obs:''},
+{d:'07',os:29,h:5.98,i:3.02,obs:''},
+{d:'08',os:1,h:6.5,i:2.5,obs:''},
+{d:'09',os:3,h:6.82,i:2.18,obs:''},
+{d:'10',special:'Folga'},
+{d:'11',os:1,h:4.5,i:null,obs:'Treinamento'},
+{d:'12',special:'—'},
+{d:'13',os:3,h:8.48,i:0.52,obs:''},
+{d:'14',os:1,h:3.83,i:5.17,obs:''},
+{d:'15',os:2,h:6.48,i:2.52,obs:''},
+{d:'16',os:2,h:7,i:2,obs:''},
+{d:'17',os:1,h:4.67,i:4.33,obs:''},
+{d:'18',special:'—'},
+{d:'19',special:'—'},
+{d:'20',special:'Folga'},
+{d:'21',special:'Feriado'},
+{d:'22',os:19,h:6.22,i:2.78,obs:''},
+{d:'23',os:8,h:1.88,i:7.12,obs:''},
+{d:'24',special:'Folga'},
+{d:'25',special:'—'},
+{d:'26',special:'—'},
+{d:'27',os:1,h:4,i:5,obs:''},
+{d:'28',os:8,h:2.67,i:6.33,obs:''},
+{d:'29',special:'Folga'},
+{d:'30',special:'Folga'},
+]},
+{id:'davi',nome:'DAVI',cargo:'Auxiliar',total:206,horas:150.16,ocioso:40.82,media:{os:8.96,h:6.53,i:2.15},
+dias:[
+{d:'01',os:11,h:6.55,i:2.45,obs:''},
+{d:'02',os:8,h:4.05,i:4.95,obs:'Limpeza na assistência'},
+{d:'03',special:'Feriado nacional'},
+{d:'04',special:'—'},{d:'05',special:'—'},
+{d:'06',os:10,h:8.52,i:0.48,obs:''},
+{d:'07',os:6,h:7.25,i:1.75,obs:''},
+{d:'08',os:3,h:6.57,i:2.43,obs:''},
+{d:'09',os:11,h:8.1,i:0.9,obs:''},
+{d:'10',os:5,h:5.32,i:3.68,obs:''},
+{d:'11',os:1,h:4.5,i:null,obs:'Treinamento'},
+{d:'12',special:'—'},
+{d:'13',os:13,h:7.55,i:1.45,obs:''},
+{d:'14',os:10,h:5.83,i:3.17,obs:''},
+{d:'15',os:12,h:6.68,i:2.32,obs:''},
+{d:'16',os:12,h:8,i:1,obs:''},
+{d:'17',os:14,h:7.38,i:1.62,obs:''},
+{d:'18',os:10,h:6.38,i:null,obs:'Sobreaviso'},
+{d:'19',os:9,h:5.7,i:null,obs:'Sobreaviso'},
+{d:'20',special:'Folga'},
+{d:'21',os:8,h:3.4,i:null,obs:'Feriado / Sobreaviso'},
+{d:'22',os:9,h:6.02,i:2.98,obs:''},
+{d:'23',os:9,h:5.37,i:3.63,obs:''},
+{d:'24',os:13,h:6.77,i:2.23,obs:''},
+{d:'25',special:'—'},{d:'26',special:'—'},
+{d:'27',os:11,h:7.8,i:1.2,obs:''},
+{d:'28',os:5,h:8.12,i:0.88,obs:''},
+{d:'29',os:9,h:6.72,i:2.28,obs:''},
+{d:'30',os:7,h:7.58,i:1.42,obs:''},
+]},
+{id:'italo',nome:'ÍTALO',cargo:'Técnico',total:70,horas:120.13,ocioso:19.13,media:{os:4.38,h:7.51,i:1.37},
+dias:[
+{d:'01',os:5,h:9.27,i:-0.27,obs:''},
+{d:'02',os:4,h:8.95,i:0.05,obs:''},
+{d:'03',special:'Feriado'},
+{d:'04',special:'—'},{d:'05',special:'—'},
+{d:'06',os:6,h:6.03,i:2.97,obs:''},
+{d:'07',os:3,h:8.58,i:0.42,obs:''},
+{d:'08',os:2,h:10.07,i:-1.07,obs:''},
+{d:'09',os:4,h:7.72,i:1.28,obs:''},
+{d:'10',os:4,h:5.93,i:3.07,obs:''},
+{d:'11',os:10,h:6.83,i:null,obs:'Sobreaviso/Treinamento'},
+{d:'12',os:9,h:6.43,i:null,obs:'Sobreaviso'},
+{d:'13',special:'Férias'},{d:'14',special:'Férias'},{d:'15',special:'Férias'},
+{d:'16',special:'Férias'},{d:'17',special:'Férias'},
+{d:'18',special:'—'},{d:'19',special:'—'},
+{d:'20',os:3,h:6.32,i:2.68,obs:''},
+{d:'21',special:'Feriado'},
+{d:'22',os:2,h:7.48,i:1.52,obs:''},
+{d:'23',os:4,h:8.45,i:0.55,obs:''},
+{d:'24',special:'Folga'},
+{d:'25',special:'—'},{d:'26',special:'—'},
+{d:'27',os:1,h:7.93,i:1.07,obs:''},
+{d:'28',os:2,h:7.72,i:1.28,obs:''},
+{d:'29',os:7,h:7.32,i:1.68,obs:''},
+{d:'30',os:4,h:5.1,i:3.9,obs:''},
+]},
+{id:'maycon',nome:'MAYCON',cargo:'Auxiliar',total:131,horas:135.45,ocioso:30.53,media:{os:6.89,h:7.13,i:1.70},
+dias:[
+{d:'01',os:6,h:5.6,i:3.4,obs:''},{d:'02',os:4,h:4.45,i:4.55,obs:''},
+{d:'03',special:'Feriado'},{d:'04',special:'—'},{d:'05',special:'—'},
+{d:'06',os:8,h:5.67,i:3.33,obs:''},
+{d:'07',os:10,h:8.62,i:0.38,obs:''},
+{d:'08',os:10,h:7.87,i:1.13,obs:''},
+{d:'09',os:4,h:7.55,i:1.45,obs:''},
+{d:'10',os:4,h:4.95,i:4.05,obs:''},
+{d:'11',os:1,h:3.98,i:null,obs:'Treinamento'},
+{d:'12',special:'—'},
+{d:'13',os:5,h:9.47,i:-0.47,obs:''},{d:'14',os:3,h:9.1,i:-0.1,obs:''},
+{d:'15',os:4,h:8.8,i:0.2,obs:''},{d:'16',os:6,h:9.73,i:-0.73,obs:''},
+{d:'17',special:'—'},{d:'18',special:'—'},{d:'19',special:'—'},
+{d:'20',special:'Folga'},{d:'21',special:'Feriado'},
+{d:'22',os:3,h:7.92,i:1.08,obs:''},
+{d:'23',os:19,h:3.73,i:5.27,obs:''},
+{d:'24',os:7,h:4.72,i:4.28,obs:''},
+{d:'25',special:'—'},{d:'26',special:'—'},
+{d:'27',os:3,h:7.25,i:1.75,obs:''},{d:'28',os:8,h:10.07,i:-1.07,obs:''},
+{d:'29',os:14,h:8.3,i:0.7,obs:''},{d:'30',os:12,h:7.67,i:1.33,obs:''},
+]},
+{id:'luis',nome:'LUIZ VINICIUS',cargo:'Técnico',total:178,horas:83.89,ocioso:122.26,media:{os:7.12,h:3.36,i:5.56},
+dias:[
+{d:'01',os:1,h:1.93,i:7.07,obs:''},{d:'02',os:7,h:3.88,i:5.12,obs:''},
+{d:'03',os:3,h:1.47,i:7.53,obs:'Feriado'},
+{d:'04',special:'—'},{d:'05',special:'—'},
+{d:'06',os:3,h:1.45,i:7.55,obs:''},{d:'07',os:8,h:3.88,i:5.12,obs:''},
+{d:'08',os:7,h:3.42,i:5.58,obs:''},{d:'09',os:7,h:3.42,i:5.58,obs:''},
+{d:'10',os:9,h:5.9,i:3.1,obs:''},
+{d:'11',os:2,h:0.98,i:null,obs:'Treinamento'},
+{d:'12',special:'—'},
+{d:'13',os:3,h:1.45,i:7.55,obs:''},{d:'14',os:8,h:3.9,i:5.1,obs:''},
+{d:'15',os:7,h:3.42,i:5.58,obs:''},{d:'16',os:7,h:3.42,i:5.58,obs:''},
+{d:'17',os:10,h:4.87,i:4.13,obs:''},
+{d:'18',os:11,h:2.87,i:null,obs:''},
+{d:'19',special:'—'},
+{d:'20',os:3,h:1.95,i:7.05,obs:''},
+{d:'21',os:4,h:2.63,i:6.37,obs:'Feriado'},
+{d:'22',os:3,h:1.95,i:7.05,obs:''},{d:'23',os:7,h:4.08,i:4.92,obs:''},
+{d:'24',os:23,h:7.65,i:1.35,obs:''},
+{d:'25',os:14,h:4.3,i:null,obs:''},
+{d:'26',special:'—'},
+{d:'27',os:3,h:1.45,i:7.55,obs:''},{d:'28',os:15,h:7.27,i:1.73,obs:''},
+{d:'29',os:6,h:2.93,i:6.07,obs:''},{d:'30',os:7,h:3.42,i:5.58,obs:''},
+]},
+{id:'roberto',nome:'ROBERTO',cargo:'Técnico',total:186,horas:112.24,ocioso:71.76,media:{os:8.86,h:5.34,i:3.59},
+dias:[
+{d:'01',os:10,h:6.72,i:2.28,obs:''},{d:'02',os:8,h:4.05,i:4.95,obs:''},
+{d:'03',special:'Feriado'},{d:'04',special:'—'},{d:'05',special:'—'},
+{d:'06',os:7,h:4.4,i:4.6,obs:''},{d:'07',os:7,h:3.73,i:5.27,obs:''},
+{d:'08',os:9,h:4.55,i:4.45,obs:''},{d:'09',os:8,h:5.4,i:3.6,obs:''},
+{d:'10',os:7,h:4.57,i:4.43,obs:''},
+{d:'11',os:1,h:4,i:null,obs:'Treinamento'},
+{d:'12',special:'—'},
+{d:'13',os:7,h:4.57,i:4.43,obs:''},{d:'14',os:8,h:5.07,i:3.93,obs:''},
+{d:'15',os:8,h:6.23,i:2.77,obs:''},{d:'16',os:7,h:3.57,i:5.43,obs:''},
+{d:'17',os:10,h:6.53,i:2.47,obs:''},
+{d:'18',special:'—'},{d:'19',special:'—'},
+{d:'20',os:9,h:5.88,i:3.12,obs:''},
+{d:'21',special:'Feriado'},
+{d:'22',os:8,h:5.07,i:3.93,obs:''},{d:'23',os:7,h:4.4,i:4.6,obs:''},
+{d:'24',os:13,h:7.75,i:1.25,obs:''},
+{d:'25',special:'—'},{d:'26',special:'—'},
+{d:'27',os:19,h:8.22,i:0.78,obs:''},{d:'28',os:18,h:7.9,i:1.1,obs:''},
+{d:'29',os:8,h:5.23,i:3.77,obs:''},{d:'30',os:7,h:4.4,i:4.6,obs:''},
+]},
+{id:'victor',nome:'VICTOR',cargo:'Auxiliar',total:79,horas:134.77,ocioso:22.21,media:{os:4.39,h:7.69,i:1.31},
+dias:[
+{d:'01',os:5,h:9.28,i:-0.28,obs:''},{d:'02',os:3,h:7.22,i:1.78,obs:''},
+{d:'03',special:'Feriado'},{d:'04',special:'—'},{d:'05',special:'—'},
+{d:'06',os:5,h:4.27,i:4.73,obs:''},{d:'07',os:3,h:8.92,i:0.08,obs:''},
+{d:'08',os:2,h:9.82,i:-0.82,obs:''},{d:'09',os:5,h:8.93,i:0.07,obs:''},
+{d:'10',os:9,h:4.92,i:4.08,obs:''},
+{d:'11',os:1,h:3.98,i:null,obs:'Treinamento'},
+{d:'12',special:'—'},
+{d:'13',os:5,h:9.47,i:-0.47,obs:''},{d:'14',os:3,h:9.1,i:-0.1,obs:''},
+{d:'15',os:4,h:8.8,i:0.2,obs:''},{d:'16',os:6,h:9.73,i:-0.73,obs:''},
+{d:'17',os:1,h:4.67,i:4.33,obs:''},
+{d:'18',special:'—'},{d:'19',special:'—'},
+{d:'20',os:9,h:6.02,i:2.98,obs:''},
+{d:'21',special:'Feriado'},{d:'22',special:'Folga'},
+{d:'23',os:3,h:8.2,i:0.8,obs:''},{d:'24',os:1,h:0.5,i:8.5,obs:''},
+{d:'25',special:'—'},{d:'26',special:'—'},
+{d:'27',os:5,h:10.22,i:-1.22,obs:''},{d:'28',os:9,h:10.72,i:-1.72,obs:''},
+{d:'29',special:'Atestado'},{d:'30',special:'Atestado'},
+]},
+{id:'welisson',nome:'WELISSON',cargo:'Técnico',total:35,horas:101.17,ocioso:51.83,media:{os:2.06,h:5.95,i:3.05},
+dias:[
+{d:'01',special:'Falta'},{d:'02',special:'—'},
+{d:'03',special:'Feriado'},{d:'04',special:'—'},{d:'05',special:'—'},
+{d:'06',os:1,h:2.33,i:6.67,obs:''},{d:'07',os:2,h:6.17,i:2.83,obs:''},
+{d:'08',os:1,h:6,i:3,obs:''},{d:'09',os:1,h:4.33,i:4.67,obs:''},
+{d:'10',os:1,h:8,i:1,obs:''},
+{d:'11',special:'Treinamento'},{d:'12',special:'—'},
+{d:'13',os:1,h:4.17,i:4.83,obs:''},{d:'14',os:4,h:7.67,i:1.33,obs:''},
+{d:'15',os:0,h:0,i:9,obs:''},
+{d:'16',os:2,h:7.67,i:1.33,obs:''},{d:'17',os:3,h:5.83,i:3.17,obs:''},
+{d:'18',special:'—'},{d:'19',special:'—'},
+{d:'20',os:2,h:7.17,i:1.83,obs:''},
+{d:'21',special:'Feriado'},{d:'22',special:'Folga'},
+{d:'23',os:1,h:4,i:5,obs:''},{d:'24',os:2,h:6.33,i:2.67,obs:''},
+{d:'25',special:'—'},{d:'26',special:'—'},
+{d:'27',os:2,h:8.83,i:0.17,obs:''},{d:'28',os:2,h:9.67,i:-0.67,obs:''},
+{d:'29',os:7,h:6.83,i:2.17,obs:''},{d:'30',os:3,h:6.17,i:2.83,obs:''},
+]},
+];
+
+const tabs = document.getElementById('tabs');
+const panels = document.getElementById('panels');
+let charts = {};
+
+team.forEach((t,idx)=>{
+  const tab = document.createElement('div');
+  tab.className = 'tab' + (idx===0?' on':'');
+  tab.textContent = t.nome.split(' ')[0];
+  tab.onclick = ()=>switchTab(t.id);
+  tabs.appendChild(tab);
+
+  const wPct = (t.horas/(t.horas+Math.max(0,t.ocioso))*100).toFixed(1);
+  const iPct = (Math.max(0,t.ocioso)/(t.horas+Math.max(0,t.ocioso))*100).toFixed(1);
+
+  const rows = t.dias.map(dia=>{
+    if(dia.special){
+      const label = dia.special==='—'?'–':dia.special;
+      const cls = dia.special==='Falta'?'b-lo':dia.special.includes('Feriado')?'b-info':dia.special==='Folga'?'b-gray':dia.special==='Férias'?'b-mid':dia.special==='Atestado'?'b-mid':'b-gray';
+      return `<tr class="special"><td>Dia ${dia.d}</td><td colspan="4"><span class="badge ${cls}">${label}</span></td></tr>`;
+    }
+    const idle = dia.i;
+    const idleDisp = idle===null?'–':(idle<0?`<span class="idle-neg">${idle.toFixed(2)}h ↑</span>`:`<span class="idle-pos">${idle.toFixed(2)}h</span>`);
+    const eff = idle===null?'<span class="badge b-info">Especial</span>':idle<0?'<span class="badge b-hi">Excelente</span>':idle<=1.5?'<span class="badge b-hi">Alta</span>':idle<=3.5?'<span class="badge b-mid">Média</span>':'<span class="badge b-lo">Baixa</span>';
+    const obsTag = dia.obs?`<span class="badge b-gray" style="margin-left:4px">${dia.obs}</span>`:'';
+    return `<tr><td>Dia ${dia.d}${dia.dw?` <span style="color:#5a7a5a;font-size:10px">${dia.dw}</span>`:''}</td><td>${dia.os}</td><td>${dia.h.toFixed(2)}h</td><td>${idleDisp}</td><td>${eff}${obsTag}</td></tr>`;
+  }).join('');
+
+  const panel = document.createElement('div');
+  panel.className = 'panel' + (idx===0?' on':'');
+  panel.id = 'panel-'+t.id;
+  panel.innerHTML = `
+    <div class="profile">
+      <div class="pstat">
+        <div class="pstat-lbl">${t.cargo}</div>
+        <div class="pstat-val">${t.nome}</div>
+        <div class="eff-bar" style="margin-top:10px">
+          <div class="eff-work" style="width:${wPct}%"></div>
+          <div class="eff-idle" style="width:${iPct}%"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px">
+          <span style="font-size:10px;color:#4cda7c">${wPct}% produtivo</span>
+          <span style="font-size:10px;color:#e85252">${iPct}% ocioso</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div class="pstat"><div class="pstat-lbl">OS Total</div><div class="pstat-val" style="color:#4cda7c">${t.total}</div><div class="pstat-sub">ordens</div></div>
+        <div class="pstat"><div class="pstat-lbl">Horas</div><div class="pstat-val">${t.horas.toFixed(1)}</div><div class="pstat-sub">trabalhadas</div></div>
+        <div class="pstat"><div class="pstat-lbl">Ocioso</div><div class="pstat-val" style="color:#e85252">${t.ocioso.toFixed(1)}</div><div class="pstat-sub">horas</div></div>
+      </div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-box"><div class="chart-title">OS por dia</div><canvas id="chart-os-${t.id}" height="120"></canvas></div>
+      <div class="chart-box"><div class="chart-title">Horas trabalhadas por dia</div><canvas id="chart-h-${t.id}" height="120"></canvas></div>
+    </div>
+    <div class="sec">Registro Diário Completo</div>
+    <div style="overflow-x:auto">
+    <table class="daily-table">
+      <thead><tr><th>Dia</th><th>OS</th><th>Horas</th><th>Ocioso</th><th>Eficiência / Obs.</th></tr></thead>
+      <tbody>${rows}</tbody>
+      <tfoot><tr class="avg-row"><td>Média</td><td>${t.media.os}</td><td>${t.media.h}h</td><td>${t.media.i}h</td><td></td></tr></tfoot>
+    </table>
+    </div>
+  `;
+  panels.appendChild(panel);
+});
+
+function buildCharts(t){
+  if(charts['os-'+t.id]) return;
+  const workDays = t.dias.filter(d=>!d.special);
+  const labels = workDays.map(d=>'D'+d.d);
+  const osData = workDays.map(d=>d.os);
+  const hData = workDays.map(d=>d.h);
+
+  const opts = {responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y}}},scales:{x:{ticks:{font:{size:9},color:'#5a7a5a'},grid:{color:'#1a261a'}},y:{ticks:{font:{size:9},color:'#5a7a5a'},grid:{color:'#1a261a'}}}};
+
+  charts['os-'+t.id] = new Chart(document.getElementById('chart-os-'+t.id),{
+    type:'bar',data:{labels,datasets:[{data:osData,backgroundColor:'rgba(76,218,124,0.7)',borderRadius:3,borderSkipped:false}]},options:{...opts}
+  });
+  charts['h-'+t.id] = new Chart(document.getElementById('chart-h-'+t.id),{
+    type:'line',data:{labels,datasets:[{data:hData,borderColor:'#4cda7c',backgroundColor:'rgba(76,218,124,0.08)',tension:0.3,pointRadius:2,fill:true}]},options:{...opts}
+  });
+}
+
+function switchTab(id){
+  document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('on',team[i].id===id)});
+  document.querySelectorAll('.panel').forEach(p=>{p.classList.toggle('on',p.id==='panel-'+id)});
+  buildCharts(team.find(t=>t.id===id));
+}
+
+buildCharts(team[0]);
+</script>
